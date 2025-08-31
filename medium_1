@@ -1,0 +1,12 @@
+#!/bin/bash
+
+mkdir -p  "$HOME/backup"
+
+allfile=$(find ./ -name '*.txt')
+
+for i in $allfile
+do
+	cp "$i" "$HOME/backup" 
+done
+
+

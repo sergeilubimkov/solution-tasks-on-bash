@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "$(df -h ./)"
+
+usedStorage=$(df --output='pcent' ./ | tail -n 1 | cut -d % -f 1)
+
+freeStorage=$(( 100 - usedStorage ))
+
+if [ $freeStorage -lt 20 ]
+then
+	echo "На диске осталось мало места"
+
+fi
+

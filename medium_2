@@ -1,0 +1,15 @@
+#!/bin/bash
+
+findfiles=$(find ./ -type f -name '*.tmp')
+
+if [ -z "$findfiles" ]
+then
+	echo "Nothing delete"
+	exit 1
+fi
+
+for i in $findfiles
+do
+	rm "$i"
+done
+

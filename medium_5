@@ -1,0 +1,38 @@
+#!/bin/bash
+
+menu="	1.Показать дату
+	2.Показать кто в системе (who)
+	3.Выйти"
+
+echo "$menu"
+
+read
+
+if [ -z "$REPLY" ]
+	then
+	echo "Надо ввести цифру после показа меню"
+	exit 1
+fi
+
+while [ $REPLY -ne 3 ]
+do
+	if [ $REPLY -eq 1 ]
+		then
+			echo "$(date)"
+	elif [ $REPLY -eq 2 ]
+		then
+			echo "$(who)"
+	else 
+		echo "Такого нет пункта"
+	fi
+	echo "$menu"
+
+	read
+	
+	if [ "$REPLY" -gt 3 ]
+		then
+		echo "Надо ввести цифру от 1 до 3"
+		exit 1
+	fi
+done
+

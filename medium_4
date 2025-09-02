@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "$(date '+%F %T') - удаление *.tmp" | tee -a script.log
+
+find ./ -type f -name '*.tmp' | tee -a script.log  | xargs -r rm -f
+

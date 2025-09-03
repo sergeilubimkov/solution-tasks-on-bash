@@ -1,0 +1,11 @@
+#!/bin/bash
+
+date=$(date '+%F_%T')
+
+mkdir -p ~/backup
+
+tar -zcvf ~/backup/$date.tar.gz /var/log
+
+
+
+

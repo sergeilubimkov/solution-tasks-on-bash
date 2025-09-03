@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if pgrep dockerd >/dev/null
+then
+	echo "Docker is up"
+else
+	echo "$(date '+%F %T') - Docker is not up" >>./logs.log
+fi
+

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+myservers=$(cat myserver)
+
+for i in $myservers
+do
+	date=$(date '+%F %T')
+	echo "Копирую на $i"
+	if scp /etc/hosts admin@$i:/home/admin/
+	then
+		echo "Файл скопирован на $i $date" >>copy_into_myservers.log
+	else 
+		echo "Ошибка: Файл не скопирован на $i $date" >>copy_into_myservers.log
+	fi
+
+done
+
+
+

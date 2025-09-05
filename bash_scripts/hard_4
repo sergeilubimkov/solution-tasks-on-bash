@@ -1,0 +1,11 @@
+#!/bin/bash
+
+tail -F myserver.log | while read line
+do
+	if echo "$line" | grep -q 'ERROR'
+	then
+		echo "$(date '+%F %T') Произошла ошибка!: $line" >> errors.log
+	fi
+done
+
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+date=$(date '+%F %T')
+checking=$(df -h | grep /dev/sdd | awk '{print($5)}' | cut -d % -f 1)
+
+if [ $checking -gt 90 ]
+then
+
+	echo "$date Диск заполнен на 90%!" | mail -s "Диск заполнен" admin@example.com	
+fi
+
+

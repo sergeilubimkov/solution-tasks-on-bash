@@ -1,0 +1,6 @@
+#!/bin/bash
+#194. Transpose File
+#Given a text file file.txt, transpose its content.
+#You may assume that each row has the same number of columns, and each field is separated by the ' ' character.
+
+awk '{for (i = 1; i <= NF; i++) {if (col[i] == "") {col[i] = $i} else {col[i] = col[i] " " $i} max = NF}} END {for (i = 1; i <= max; i++) {print col[i]}}' file.txt

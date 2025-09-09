@@ -1,0 +1,41 @@
+#!/bin/bash
+
+menu="	0. Выйти
+	1. Запустить
+	2. Остановить
+	3. Перезапустить"
+
+echo "$menu"
+
+read
+
+if [ -z "$REPLY" ]
+then
+	echo "После вывода меню необходимо ввести цифру"
+fi
+
+while [ "$REPLY" -ne "0" ]
+do
+	if [ "$REPLY" -eq "1" ]
+	then
+		systemctl start nginx
+
+	elif [ "$REPLY" -eq "2" ]
+	then
+		systemctl stop nginx
+
+	elif [ "$REPLY" -eq "3" ]
+	then	
+		systemctl restart nginx
+
+	else
+		echo "Такого пункта нет"
+
+	fi
+
+	echo "$menu"	
+	
+	read
+
+done
+

@@ -1,0 +1,26 @@
+#!/bin/bash
+#Подсчет уникальных IP-адресов из access.log
+#	В файле access.log есть список строк, где первое поле — IP-адрес.
+#	Нужно подсчитать количество уникальных IP и вывести топ-5 самых частых.
+
+declare -A list
+
+while read line
+do	
+	ip=${line%% *}
+	(( list[$ip]++ ))
+
+done < access.log
+
+echo "Кол-во уникальных IP: ${#list[@]}"
+
+for i in "${!list[@]}"
+do
+	echo "$i ${list[$i]}"
+done | sort -k2,2nr -k1,1 | head -n 5
+
+
+
+
+
+

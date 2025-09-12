@@ -1,0 +1,21 @@
+#!/bin/bash
+
+users=(Alice Bob Calr Jack Olivia Harry Grace William Lucy)
+
+ids=(101 102 103 104 105 106 107 108 109)
+
+new_lst=()
+
+len=${#users[@]}
+
+for ((i=0; i < $len; i++))
+do
+	temp="${users[$i]}=${ids[$i]}"
+	new_lst+=("$temp")
+done
+
+for i in "${new_lst[@]}"
+do
+	echo "$i"
+done
+

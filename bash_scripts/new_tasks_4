@@ -1,0 +1,27 @@
+#!/bin/bash
+
+lst=(6 8 0 4 3 5 1 2 9 11 15 7 10 14 13 12)
+
+len=$(( ${#lst[@]} - 1 ))
+n=$len
+
+while (( n > 0 ))
+do
+	for ((i=0; i<$n; i++))
+	do 
+		if (( ${lst[i]} > ${lst[i+1]} ))
+		then
+			temp=${lst[i+1]}
+			lst[i+1]=${lst[i]}
+			lst[i]=$temp
+		fi
+	done
+	(( n-- ))	
+done
+
+for i in "${lst[@]}"
+do
+	echo "$i"
+done
+
+

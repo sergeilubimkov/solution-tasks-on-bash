@@ -1,0 +1,16 @@
+#!/bin/bash
+
+domen=example.com
+
+days10=$((10*24*60*60))
+
+check=$(openssl s_client -connect $domen:443 -servername $domen < /dev/null 2>/dev/null | openssl x509 -noout -checkend $days10)
+
+if echo "$check" | grep -q "will expire" 
+then
+	echo "Сертификат скоро истечёт для $domen" >> ssl_check.log
+fi
+
+
+
+

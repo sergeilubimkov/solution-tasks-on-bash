@@ -1,0 +1,16 @@
+#!/bin/bash
+
+while read line
+do
+	date=$(date "+%F %T")
+	check=$(systemctl is-active "$line") 
+	if [ "$check" != "active" ]
+	then
+		echo "$date $line сервис не работает" >> service.log
+		systemctl restart "$line"
+	else
+		echo "$line работает"
+	fi
+
+done < programm_for_check
+

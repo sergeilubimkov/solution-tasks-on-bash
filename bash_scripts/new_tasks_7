@@ -1,0 +1,15 @@
+#!/bin/bash
+
+while read line
+do
+	date=$(date '+%F %T')
+	check=$(curl -Is -o /dev/null -w "%{http_code}" "$line") 
+	if [[ $check == '200' || $check == '300' ]]
+	then
+		echo "$date OK $line" >> sites.logs
+	else
+		echo "$date ERROR $line" >> sites.logs
+	fi
+
+done < sites
+

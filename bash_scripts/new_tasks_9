@@ -1,0 +1,6 @@
+#!/bin/bash
+
+deleted_count=$(find "/var/log" -type f -mtime +30 -print -delete | wc -l)
+
+echo "$(date '+%Y-%m-%d') файлов было удалено $deleted_count" >> /var/log/deletefile.log
+

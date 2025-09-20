@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "Введите имя"
+
+read name
+
+func_hello(){
+
+echo "Привет! $1"
+
+}
+
+func_hello "$name"
+
+

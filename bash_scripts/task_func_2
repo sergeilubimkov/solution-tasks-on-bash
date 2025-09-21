@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo "Введите первое число"
+read a
+
+echo "Введите второе число"
+read b
+
+sum(){
+	echo "$(( $1 + $2 ))"
+
+}
+
+sum "$a" "$b"
+
+ans=$(sum "$a" "$b")
+
+echo "Сумма $ans"
+

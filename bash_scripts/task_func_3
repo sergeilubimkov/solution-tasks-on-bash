@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo "Введите путь до файла"
+read path
+
+check_file() {
+
+	if [[ -f "$1" ]]
+	then
+		echo "Файл найден"
+	else
+		echo "Файл не найден"
+	fi
+
+}
+
+check_file $path
+
+
+

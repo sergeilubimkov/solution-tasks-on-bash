@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "Введите файл"
+
+read path
+
+count_lines() {
+	
+	echo "$(wc -l < $1)"
+
+}
+
+count_lines "$path"
+

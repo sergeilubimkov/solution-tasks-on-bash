@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo "Введите путь до файла"
+read path
+
+backup_file() {
+
+	date=$(date '+%F_%T')
+	mkdir -p "$HOME/backup/"
+	filename=$(basename "$1")
+
+	filename="${filename}_${date}"
+	cp "$1" "$HOME/backup/$filename"
+
+}
+
+backup_file "$path"
+
+

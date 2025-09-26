@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "Введите сообщение"
+read message
+
+log_message() {
+
+	date_now=$(date '+%F %T')
+	echo "$1 $date_now" >> script.log
+
+}
+
+log_message "$message"
+
+

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "Введите путь до директории"
+read path
+
+echo "Введите максимальный размер файлов"
+read max_size
+
+find_big_file() {
+	
+	find "$1" -type f -size +"$2"
+
+}
+
+find_big_file "$path" "$max_size"
+

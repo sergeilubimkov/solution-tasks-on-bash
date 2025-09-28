@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo "Введите имя процесса"
+read proc
+
+monitor_process(){
+
+	ret=$(pgrep $1)
+	if [[ -z $ret ]]
+	then
+		echo "Процесс не запущен"
+	else
+		echo "Процесс запущен"
+	fi
+}
+
+monitor_process $proc
+

@@ -1,0 +1,53 @@
+#!/bin/bash
+menu() {
+    echo "Выберите действие:
+       	1) Посчитать строки в файле
+       	2) Найти большие файлы
+	3) Проверить Интернет
+	4) Выход"
+
+}
+
+counter_line_in_file() {
+    read -r -p "Введите путь до файла: " file
+    if [[ -f "$file" ]]
+    then
+        echo "Количество строк: $(wc -l < "$file")"
+    else
+        echo "Файл не найден"
+    fi
+}
+
+find_big_file() {
+    read -r -p "Введите путь до директории: " path
+    read -r -p "Введите минимальный размер (например, 50M): " size
+    echo "Файлы больше $size:"
+    find "$path" -type f -size +"$size"
+}
+
+check_connection() {
+    if ping -c 1 -W 2 8.8.8.8 > /dev/null 2>&1
+    then
+	echo "Интернет доступен"
+    else
+        echo "Интернет не доступен"
+    fi
+}
+
+exit_from_script() {
+    echo "Выход..."
+    exit 0
+}
+
+while true
+do
+    menu
+    read -r -p "Ваш выбор: " choice
+    case $choice in
+        1) counter_line_in_file ;;
+	2) find_big_file ;;
+	3) check_connection ;;
+	4) exit_from_script ;;
+	*) echo "Неверный пункт меню" ;;
+    esac
+done

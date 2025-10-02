@@ -1,0 +1,6 @@
+#!/bin/bash
+
+grep -o "access granted" auth.log | wc -l
+
+
+
